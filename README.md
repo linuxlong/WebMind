@@ -1,10 +1,8 @@
-WinMind
+WinMind --　随时随地、所思所想
+
 	author: linuxlong
 	mail  : linuxlong@163.com
 
-======
-
-WinMind-　随时随地、所思所想
 	The goal is :
 
 		Whenever you are, Wherever you are, Whatever you think,
