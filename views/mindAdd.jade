@@ -1,35 +1,26 @@
-doctype html
-html
-	head
-		title= title
-		<script src="/javascripts/jquery/jquery.min.js"></script>
-		<script src="/javascripts/bootstrap/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap-theme.css"/>
-		<link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap.min.css"/>
-	body
-		div( class="container theme-showcase" )
-			div.jumbotron
-				h1 WebMind <small>随时随地、所思所想</small>
-			div.page-header
-				h2 添加思想
-			div.row
-				div.col-sm-1
-				div.col-sm-8
-					form( method="post" action="/minds/add")
-						table.table
-							tbody
-								input( name="id" hidden=true,value="#{mindVo.id}")
-								tr
-									td: span 名称  
-									td 
-										input(class="form-control",name="name",value="#{mindVo.name}")
-								tr
-									td: span 描述  
-									td: textarea(class="form-control",name="context") #{mindVo.context}
-								tr( align="center" )
-									td( colspan="2")
-										input( class="btn btn-success" type="submit" value="提交")
-										<span>&nbsp;&nbsp;<span>
-										input( class="btn btn-warning" type="reset" value="取消")
-										<span>&nbsp;&nbsp;<span>
-										input( class="btn btn-info" type="button" value="返回" onclick="javascript.void(0);")
+extends layout
+
+block content
+	div.page-header
+		h2 添加思想
+	div.row
+		div.col-sm-1
+		div.col-sm-8
+			form( method="post" action="/minds/add")
+				table.table
+					tbody
+						input( name="id" hidden=true,value="#{mindVo.id}")
+						tr
+							td: span 名称  
+							td 
+								input(class="form-control",name="name",value="#{mindVo.name}")
+						tr
+							td: span 描述  
+							td: textarea(class="form-control",name="context") #{mindVo.context}
+						tr( align="center" )
+							td( colspan="2")
+								input( class="btn btn-success" type="submit" value="提交")
+								<span>&nbsp;&nbsp;<span>
+								input( class="btn btn-warning" type="reset" value="取消")
+								<span>&nbsp;&nbsp;<span>
+								input( class="btn btn-info" type="button" value="返回" onclick="window.location.href='/minds'")

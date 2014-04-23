@@ -2,8 +2,8 @@ extends layout
 
 block content
 	div.page-header
-		h2 所有思想
-			a( href="/minds/add" ) <small>添加思想</small>
+		h2 所有用户
+			a( href="/minds/add" ) <small>添加用户</small>
 	div.row
 		div.col-sm-1
 		div.col-sm-8
@@ -12,15 +12,15 @@ block content
 					tr
 						th 序号 
 						th 名称
-						th 描述
+						th 邮箱
 						th 创建时间
 						th 最后一次修改时间
 						th 操作
-					each val,index in mindRows
+					each val,index in users 
 						tr
 							td=index+1
 							td=val.name
-							td=val.context
+							td=val.mail
 							td=val.create_time
 							td=val.modify_time
 							td

@@ -1,3 +1,5 @@
+//author: Longer
+//Use MySQL origin SQL statement
 var express = require( 'express' );
 var bodyParser = require('body-parser');
 var mysql = require( 'mysql' );
@@ -24,26 +26,22 @@ function mapping( rows,fields ){
     return mindRows;
 }
 
-router.get('',function( req,res ){
-
-    console.log( "/" );
-
+function list( req,res ){
     var sql = "select id,name,date_format(create_time,'%Y-%m-%d %k:%i:%s') create_time, date_format(modify_time,'%Y-%m-%d %k:%i:%s') modify_time,context from minds";
     pool.query( sql, function( err,rows,fields ){
 	if( err ) throw err;
 		var mindRows = mapping( rows,fields );
 		res.render( 'minds',{ mindRows : mindRows });		
     });
+}
 
-});
 
-
-router.get( '/add', function( req,res ){
+function add( req,res ){
 	var mindVo = { id : "",name : "",context : ""};
 	res.render( 'mindAdd', {mindVo:mindVo} );		
-});
+}
 
-router.post( '/add', function( req,res ){
+function addPost( req,res ){
     console.log( "/add" );
     var mindVo = req.body;
     console.log( mindVo );
@@ -60,9 +58,9 @@ router.post( '/add', function( req,res ){
 	res.render( 'mindAdd',{ mindVo: mindVo });		
     });
     
-});
+}
 
-router.get( '/modify/:id', function( req,res ){
+function modify( req,res ){
     var id = req.params.id;
     if( id ){
 	var sql = "select id,name,date_format(create_time,'%Y-%m-%d %k:%i:%s') create_time, date_format(modify_time,'%Y-%m-%d %k:%i:%s') modify_time,context from minds where id = ?";
@@ -77,6 +75,11 @@ router.get( '/modify/:id', function( req,res ){
     } else {
 	res.render( 'minds');		
     }
-});
+}
 
-module.exports = router;
+module.exports = {
+	add : add,
+	list : list,
+	addPost : addPost,
+	modify : modify
+};

@@ -4,11 +4,10 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var utils = require('connect').utils;
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var minds = require('./routes/minds');
+var models = require('./models');
+var routes = require('./config/routes.js');
+var settings = require('./config/settings.js');
 
 var app = express();
 
@@ -25,9 +24,16 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/minds', minds);
+app.use( function( req,res,next ){
+	console.info( "-----------" );
+	models( function( err,db ){
+		if( err) return next( err );
+		req.models = db.models;
+		req.db = db;
+		return next();
+	});	
+});
+routes( app );
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -60,8 +66,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen( 3000 );
-console.log( "app listen http://127.0.0.1:3000/minds" );
+app.listen( settings.port ,function(){
+	console.log( "app listen http://127.0.0.1:" + settings.port + " /minds" );
+} );
 
 
 module.exports = app;
