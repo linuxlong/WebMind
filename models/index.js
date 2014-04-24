@@ -1,11 +1,12 @@
 var orm      = require('orm');
 var settings = require('../config/settings');
+var user = require( './userDefine' );
+var mind = require( './mindDefine' );
 
 function setup(db, callback) {
-	db.load( './user',function(err){
-		if( err ) callback( err );		
-		return callback(null, db);
-	});
+	db.define( user.table, user.fields );
+	db.define( mind.table, mind.fields );
+	return callback(null, db);
 
 }
 var connection = null;

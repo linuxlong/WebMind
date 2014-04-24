@@ -25,7 +25,6 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( function( req,res,next ){
-	console.info( "-----------" );
 	models( function( err,db ){
 		if( err) return next( err );
 		req.models = db.models;
@@ -67,7 +66,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen( settings.port ,function(){
-	console.log( "app listen http://127.0.0.1:" + settings.port + " /minds" );
+	console.log( "app listen http://127.0.0.1:" + settings.port);
 } );
 
 

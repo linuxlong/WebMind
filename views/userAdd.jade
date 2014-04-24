@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	div.page-header
+		h2 添加用户
+	div.row
+		div.col-sm-1
+		div.col-sm-8
+			form( method="post" action="/users/add")
+				table.table
+					tbody
+						input( name="id" hidden=true,value="#{userVo.id}")
+						tr
+							td: span 姓名 
+							td: input(class="form-control",name="name",value="#{userVo.name}")
+						tr
+							td: span 邮箱  
+							td: input(class="form-control",name="mail",value="#{userVo.mail}")
+						tr( align="center" )
+							td( colspan="2")
+								input( class="btn btn-success" type="submit" value="提交")
+								<span>&nbsp;&nbsp;<span>
+								input( class="btn btn-warning" type="reset" value="取消")
+								<span>&nbsp;&nbsp;<span>
+								input( class="btn btn-info" type="button" value="返回" onclick="window.location.href='/users'")

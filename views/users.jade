@@ -3,7 +3,7 @@ extends layout
 block content
 	div.page-header
 		h2 所有用户
-			a( href="/minds/add" ) <small>添加用户</small>
+			a( href="/users/get" ) <small>添加用户</small>
 	div.row
 		div.col-sm-1
 		div.col-sm-8
@@ -24,5 +24,5 @@ block content
 							td=val.create_time
 							td=val.modify_time
 							td
-								a( href="/minds/modify/#{val.id}" ) 修改
-								a( href="/minds/del/#{val.id}" ) 删除 
+								a( href="/users/get/#{val.id}" ) 修改
+								a( href="/users/del/#{val.id}" ) 删除 
