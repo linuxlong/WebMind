@@ -1,0 +1,18 @@
+div( class="navbar navbar-inverse navbar-fixed-top")
+	div.container
+		div.navbar-header
+			button(class="navbar-toggle",type="button")
+				span(class="sr-only") Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a(class="navbar-brand" href="/") WebMind
+			a(class="navbar-brand" href="/users") 用户管理
+			a(class="navbar-brand" href="/minds") 思想管理
+		div(class="navbar-collapse collapse")
+			form(class="navbar-form navbar-right")
+				div.form-group
+					input(type="text",class="form-control",placeholder="邮箱")
+				div.form-group
+					input(type="password",class="form-control",placeholder="密码")
+				button(class="btn btn-success",type="submit") 登录
