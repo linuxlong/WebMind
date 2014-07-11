@@ -51,5 +51,9 @@ module.exports = {
 				res.render( 'minds', { minds : minds } );
 			}
 		});		
+	},
+	edit : function( req,res,next ){
+		var id = req.params.id;
+		res.render( 'mindInfo.html' ); 
 	}
 };

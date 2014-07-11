@@ -8,6 +8,7 @@ module.exports = function (app) {
   app.get( '/minds/get/:id'		,controllers.mind.get );
   app.post('/minds/add'			,controllers.mind.add);
   app.get( '/minds/del/:id'		,controllers.mind.del);
+  app.get( '/minds/edit/:id'	,controllers.mind.edit);
 
   //users
   app.get( '/users'				,controllers.user.list );
